@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portofolio Adi Abdul Rozaq — Full Stack Developer berpengalaman dalam membangun solusi digital modern.">
+    <meta name="author" content="Adi Abdul Rozaq">
+    <title>Adi Abdul Rozaq — Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Background Glows -->
+    <div class="blob-glow blob-1"></div>
+    <div class="blob-glow blob-2"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo"><span>&lt;</span>AAR<span>/&gt;</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" class="nav-link" data-section="about">Tentang</a></li>
+                <li><a href="#skills" class="nav-link" data-section="skills">Keahlian</a></li>
+                <li><a href="#experience" class="nav-link" data-section="experience">Pengalaman</a></li>
+                <li><a href="#projects" class="nav-link" data-section="projects">Proyek</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Kontak</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="icon-btn" aria-label="Ganti tema">
+                    <i data-lucide="sun" class="sun"></i>
+                    <i data-lucide="moon" class="moon"></i>
+                </button>
+                <button id="menuToggle" class="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="#about" class="mobile-link">Tentang</a>
+        <a href="#skills" class="mobile-link">Keahlian</a>
+        <a href="#experience" class="mobile-link">Pengalaman</a>
+        <a href="#projects" class="mobile-link">Proyek</a>
+        <a href="#contact" class="mobile-link">Kontak</a>
+    </div>
+
+    <!-- Hero -->
+    <header id="hero" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <p class="hero-label fade-up"><span class="dot"></span> Tersedia untuk Peluang Baru</p>
+                <h1 class="fade-up d1">Adi Abdul Rozaq</h1>
+                <p class="hero-role fade-up d2"><span id="typewriter"></span><span class="blink">|</span></p>
+                <p class="hero-desc fade-up d3">Full Stack Developer berpengalaman 3+ tahun membangun aplikasi web modern, efisien, dan berdampak nyata bagi bisnis.</p>
+                <div class="hero-cta fade-up d4">
+                    <a href="#projects" class="btn-primary"><i data-lucide="folder-open"></i> Lihat Proyek</a>
+                    <a href="#contact" class="btn-ghost"><i data-lucide="mail"></i> Hubungi Saya</a>
+                </div>
+            </div>
+            <div class="hero-visual fade-up d2">
+                <div class="code-window">
+                    <div class="window-header">
+                        <span class="window-dot red"></span>
+                        <span class="window-dot yellow"></span>
+                        <span class="window-dot green"></span>
+                        <span class="window-title">developer.js</span>
+                    </div>
+                    <div class="window-body">
+                        <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = {
+  name: <span class="string">'Adi Abdul Rozaq'</span>,
+  role: <span class="string">'Full Stack Developer'</span>,
+  experience: <span class="number">3</span>, <span class="comment">// years</span>
+  skills: [
+    <span class="string">'Laravel'</span>, <span class="string">'React.js'</span>, 
+    <span class="string">'Node.js'</span>, <span class="string">'PostgreSQL'</span>
+  ],
+  passion: <span class="string">'Modern & Scalable Web'</span>
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </header>
+
+    <!-- About -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="photo-frame">
+                        <img src="profile.jpg" alt="Adi Abdul Rozaq" class="profile-photo">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Saya adalah seorang <strong>Full Stack Developer</strong> dengan pengalaman kurang lebih 1 tahun dalam merancang dan mengembangkan aplikasi web. Keahlian saya meliputi JavaScript ecosystem, PHP/Laravel, dan berbagai framework modern.</p>
+                        <p>Saya mengutamakan kode yang <strong>maintainable</strong>, <strong>scalable</strong>, dan menghasilkan <strong>user experience</strong> terbaik di setiap proyek.</p>
+                    </div>
+                    <div class="about-details">
+                        <div class="detail-row"><i data-lucide="user"></i><div><small>Nama</small><strong>Adi Abdul Rozaq</strong></div></div>
+                        <div class="detail-row"><i data-lucide="map-pin"></i><div><small>Lokasi</small><strong>Sokayasa, Banjarnegara, Jawa Tengah</strong></div></div>
+                        <div class="detail-row"><i data-lucide="mail"></i><div><small>Email</small><strong>adiabdulrozaq15@gmail.com</strong></div></div>
+                        <div class="detail-row"><i data-lucide="phone"></i><div><small>Telepon</small><strong>+62 882-3289-3925</strong></div></div>
+                        <div class="detail-row"><i data-lucide="globe"></i><div><small>Bahasa</small><strong>Indonesia, English</strong></div></div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="icon-btn" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                        <a href="#" class="icon-btn" aria-label="GitHub"><i data-lucide="github"></i></a>
+                        <a href="#" class="icon-btn" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Keahlian Teknis</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon frontend"><i data-lucide="monitor"></i></div>
+                    <h3>Frontend</h3>
+                    <ul class="skill-tags">
+                        <li>HTML5 / CSS3</li><li>JavaScript (ES6+)</li><li>React.js / Next.js</li><li>TypeScript</li><li>Tailwind CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon backend"><i data-lucide="server"></i></div>
+                    <h3>Backend</h3>
+                    <ul class="skill-tags">
+                        <li>PHP / Laravel</li><li>Node.js / Express</li><li>MySQL / PostgreSQL</li><li>REST API</li><li>MongoDB</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon tools"><i data-lucide="wrench"></i></div>
+                    <h3>Tools & DevOps</h3>
+                    <ul class="skill-tags">
+                        <li>Git / GitHub</li><li>Docker</li><li>VS Code</li><li>Figma</li><li>Vercel / Netlify</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Pengalaman & Pendidikan</h2>
+            <div class="two-col">
+                <!-- Work -->
+                <div>
+                    <h3 class="sub-title"><i data-lucide="briefcase"></i> Pengalaman Kerja</h3>
+                    <div class="timeline">
+                        <div class="tl-item">
+                            <div class="tl-dot now"></div>
+                            <div class="tl-body">
+                                <span class="tl-date">Jan 2024 — Sekarang</span>
+                                <h4>Full Stack Developer</h4>
+                                <p class="tl-place">PT. Teknologi Solusi Digital</p>
+                                <ul>
+                                    <li>Mengembangkan aplikasi web berbasis React.js dan Node.js</li>
+                                    <li>Merancang REST API melayani 10.000+ request/hari</li>
+                                    <li>Menerapkan CI/CD pipeline, mengurangi deployment time 60%</li>
+                                </ul>
+                                <div class="tags"><span>React.js</span><span>Node.js</span><span>PostgreSQL</span><span>Docker</span></div>
+                            </div>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-dot"></div>
+                            <div class="tl-body">
+                                <span class="tl-date">Mar 2022 — Dec 2023</span>
+                                <h4>Frontend Developer</h4>
+                                <p class="tl-place">CV. Creative Web Studio</p>
+                                <ul>
+                                    <li>Membangun 10+ website perusahaan responsif dan modern</li>
+                                    <li>Mengoptimasi performa website hingga Lighthouse 90+</li>
+                                    <li>Mentoring 3 junior developer</li>
+                                </ul>
+                                <div class="tags"><span>JavaScript</span><span>Vue.js</span><span>GSAP</span></div>
+                            </div>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-dot"></div>
+                            <div class="tl-body">
+                                <span class="tl-date">Aug 2021 — Feb 2022</span>
+                                <h4>Web Developer Intern</h4>
+                                <p class="tl-place">Startup Inovasi Indonesia</p>
+                                <ul>
+                                    <li>Membangun fitur pada platform e-learning (Laravel)</li>
+                                    <li>Membuat dashboard admin dengan statistik real-time</li>
+                                </ul>
+                                <div class="tags"><span>PHP</span><span>Laravel</span><span>MySQL</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Education & Certs -->
+                <div>
+                    <h3 class="sub-title"><i data-lucide="graduation-cap"></i> Pendidikan</h3>
+                    <div class="edu-item">
+                        <div class="edu-badge">S1</div>
+                        <div>
+                            <span class="tl-date">2021 — 2025</span>
+                            <h4>Sarjana Teknik Informatika</h4>
+                            <p class="tl-place">Universitas Muhammadiyah Purwokerto</p>
+                            <p class="edu-award"><i data-lucide="award"></i> IPK: 3.59 / 4.00 — Cum Laude</p>
+                        </div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-badge alt">BC</div>
+                        <div>
+                            <span class="tl-date">2022</span>
+                            <h4>Full Stack Web Development</h4>
+                            <p class="tl-place">Dicoding Indonesia</p>
+                            <p class="edu-desc">Program intensif 6 bulan: React, Node.js, database, deployment.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="sub-title mt-32"><i data-lucide="award"></i> Sertifikasi & Penghargaan</h3>
+                    <div class="cert-list">
+                        <div class="cert-row"><i data-lucide="check-circle" class="cert-ok"></i><div><strong>Programmer</strong><br><small>Badan Sertifikasi Nasional — Juli 2025</small></div></div>
+                        <div class="cert-row"><i data-lucide="check-circle" class="cert-ok"></i><div><strong>Certificate of English Proficiency</strong><br><small>LDC UMP — 2023</small></div></div>
+                        <div class="cert-row"><i data-lucide="check-circle" class="cert-ok"></i><div><strong>TOEFL</strong><br><small>Brighten English — Oktober 2025</small></div></div>
+                        <div class="cert-row"><i data-lucide="trophy" class="cert-trophy"></i><div><strong>Juara 2 — Hackathon Nasional</strong><br><small>Kemenkominfo RI — November 2022</small></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Proyek</h2>
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="api">API</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-cat="web">
+                    <div class="proj-thumb t1"><i data-lucide="shopping-cart"></i></div>
+                    <div class="proj-info">
+                        <h4>E-Commerce Platform</h4>
+                        <p>Platform e-commerce lengkap dengan keranjang belanja, payment gateway, dan dashboard admin.</p>
+                        <div class="tags"><span>Next.js</span><span>Prisma</span><span>Stripe</span><span>PostgreSQL</span></div>
+                    </div>
+                </div>
+                <div class="project-card" data-cat="web">
+                    <div class="proj-thumb t2"><i data-lucide="bar-chart-3"></i></div>
+                    <div class="proj-info">
+                        <h4>Financial Dashboard</h4>
+                        <p>Manajemen keuangan pribadi dengan visualisasi data interaktif dan laporan otomatis.</p>
+                        <div class="tags"><span>React</span><span>Chart.js</span><span>Node.js</span><span>MongoDB</span></div>
+                    </div>
+                </div>
+                <div class="project-card" data-cat="api">
+                    <div class="proj-thumb t3"><i data-lucide="cpu"></i></div>
+                    <div class="proj-info">
+                        <h4>RESTful API Gateway</h4>
+                        <p>API gateway scalable dengan rate limiting, JWT auth, dan dokumentasi Swagger.</p>
+                        <div class="tags"><span>Express.js</span><span>Redis</span><span>JWT</span><span>Swagger</span></div>
+                    </div>
+                </div>
+                <div class="project-card" data-cat="mobile">
+                    <div class="proj-thumb t4"><i data-lucide="clipboard-list"></i></div>
+                    <div class="proj-info">
+                        <h4>Task Management App</h4>
+                        <p>Manajemen tugas dengan Kanban board, notifikasi real-time, dan integrasi kalender.</p>
+                        <div class="tags"><span>React Native</span><span>Firebase</span><span>Redux</span></div>
+                    </div>
+                </div>
+                <div class="project-card" data-cat="web">
+                    <div class="proj-thumb t5"><i data-lucide="book-open"></i></div>
+                    <div class="proj-info">
+                        <h4>Learning Management System</h4>
+                        <p>Platform e-learning dengan video streaming, kuis interaktif, dan sertifikat otomatis.</p>
+                        <div class="tags"><span>Laravel</span><span>Vue.js</span><span>MySQL</span><span>AWS S3</span></div>
+                    </div>
+                </div>
+                <div class="project-card" data-cat="web">
+                    <div class="proj-thumb t6"><i data-lucide="message-square"></i></div>
+                    <div class="proj-info">
+                        <h4>Real-Time Chat App</h4>
+                        <p>Aplikasi chat real-time dengan grup, berbagi file, dan enkripsi end-to-end.</p>
+                        <div class="tags"><span>Socket.io</span><span>React</span><span>Node.js</span><span>MongoDB</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Kontak</h2>
+            <div class="contact-grid">
+                <div class="contact-left">
+                    <h3>Mari Terhubung</h3>
+                    <p>Saya selalu terbuka untuk mendiskusikan peluang kerja, proyek freelance, atau kolaborasi menarik lainnya.</p>
+                    <div class="contact-list">
+                        <a href="mailto:adiabdulrozaq15@gmail.com" class="contact-row"><i data-lucide="mail"></i><div><small>Email</small>adiabdulrozaq15@gmail.com</div></a>
+                        <a href="https://wa.me/6288232893925" class="contact-row"><i data-lucide="phone"></i><div><small>WhatsApp</small>+62 882-3289-3925</div></a>
+                        <div class="contact-row"><i data-lucide="map-pin"></i><div><small>Lokasi</small>Sokayasa, Banjarnegara, Jawa Tengah</div></div>
+                    </div>
+                </div>
+                <form id="contactForm" class="contact-form" action="https://formsubmit.co/adiabdulrozaq15@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Pesan Baru dari Portofolio">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+                    <div class="field"><label for="name">Nama</label><input type="text" id="name" name="Nama" placeholder="Nama lengkap" required></div>
+                    <div class="field"><label for="email">Email</label><input type="email" id="email" name="Email" placeholder="Alamat email" required></div>
+                    <div class="field"><label for="message">Pesan</label><textarea id="message" name="Pesan" placeholder="Tulis pesan..." rows="4" required></textarea></div>
+                    <button type="submit" id="submitBtn" class="btn-primary full"><i data-lucide="send"></i> Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 Adi Abdul Rozaq. Dibuat dengan <span class="heart">❤</span> dan kode berkualitas.</p>
+            <div class="footer-links">
+                <a href="#about">Tentang</a><a href="#skills">Keahlian</a><a href="#projects">Proyek</a><a href="#contact">Kontak</a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="Ke atas"><i data-lucide="arrow-up"></i></button>
+    <script src="script.js"></script>
+</body>
+</html>
