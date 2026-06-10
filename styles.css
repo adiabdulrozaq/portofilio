@@ -43,7 +43,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: 70px;
 }
 
 body {
@@ -115,7 +115,7 @@ strong {
 }
 
 .section {
-    padding: 110px 0;
+    padding: 70px 0;
     position: relative;
     z-index: 1;
 }
@@ -128,7 +128,7 @@ strong {
     font-size: 2.25rem;
     font-weight: 800;
     letter-spacing: -0.03em;
-    margin-bottom: 56px;
+    margin-bottom: 36px;
     position: relative;
     display: inline-block;
 }
@@ -529,7 +529,7 @@ strong {
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
     gap: 60px;
-    align-items: center;
+    align-items: start;
 }
 
 .about-visual {

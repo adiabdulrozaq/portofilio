@@ -53,7 +53,7 @@ function scrollToSection(sectionId, smooth = true) {
         const el = document.getElementById(sectionId);
         if (el) {
             const navbarHeight = document.getElementById('navbar').offsetHeight;
-            const top = el.offsetTop - navbarHeight - 10;
+            const top = el.offsetTop - navbarHeight;
             window.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
         }
     }
