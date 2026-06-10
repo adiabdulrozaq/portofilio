@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectFilter();
     initContactForm();
     initBackToTop();
+    initSmoothScroll();
 });
 
 // Theme Toggle
@@ -218,5 +219,23 @@ function initBackToTop() {
 
     btn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// Smooth Scroll & Clean URL (no # in address bar)
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href === '#') return; // skip logo link
+
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Clean URL: remove hash without adding to browser history
+                history.replaceState(null, '', window.location.pathname);
+            }
+        });
     });
 }
