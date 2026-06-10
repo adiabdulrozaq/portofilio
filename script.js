@@ -13,11 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== Router (History API) =====
-const BASE_PATH = getBasePath();
-
 function getBasePath() {
-    // Detect base path from <base> tag or default to /portofilio/
-    // Works both locally (e.g., /portofolio/) and on GitHub Pages (e.g., /portofilio/)
     const path = window.location.pathname;
     const segments = ['about', 'skills', 'experience', 'projects', 'contact'];
     for (const seg of segments) {
@@ -26,10 +22,14 @@ function getBasePath() {
             return path.substring(0, idx + 1);
         }
     }
-    // If no section found in URL, return current path as base
-    // Make sure it ends with /
     return path.endsWith('/') ? path : path + '/';
 }
+
+const BASE_PATH = getBasePath();
+
+// Flag to prevent scroll handler from overwriting URL during programmatic scroll
+let isProgrammaticScroll = false;
+let programmaticScrollTimer = null;
 
 function getSectionFromPath() {
     const path = window.location.pathname;
@@ -43,16 +43,25 @@ function getSectionFromPath() {
 }
 
 function scrollToSection(sectionId, smooth = true) {
+    // Block scroll-based URL updates during programmatic scroll
+    isProgrammaticScroll = true;
+    clearTimeout(programmaticScrollTimer);
+
     if (sectionId === 'hero' || !sectionId) {
         window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
-        return;
+    } else {
+        const el = document.getElementById(sectionId);
+        if (el) {
+            const navbarHeight = document.getElementById('navbar').offsetHeight;
+            const top = el.offsetTop - navbarHeight - 10;
+            window.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
+        }
     }
-    const el = document.getElementById(sectionId);
-    if (el) {
-        const navbarHeight = document.getElementById('navbar').offsetHeight;
-        const top = el.offsetTop - navbarHeight - 10;
-        window.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
-    }
+
+    // Re-enable scroll-based URL updates after scroll animation completes
+    programmaticScrollTimer = setTimeout(() => {
+        isProgrammaticScroll = false;
+    }, smooth ? 1000 : 300);
 }
 
 function updateURL(sectionId) {
@@ -82,6 +91,8 @@ function initRouter() {
         if (!link) return;
 
         e.preventDefault();
+        e.stopPropagation();
+
         const section = link.getAttribute('data-section');
 
         updateURL(section);
@@ -107,12 +118,10 @@ function initRouter() {
     const redirectSection = sessionStorage.getItem('redirect_section');
     if (redirectSection) {
         sessionStorage.removeItem('redirect_section');
-        // Restore the clean URL
         const newPath = BASE_PATH + redirectSection;
         history.replaceState({ section: redirectSection }, '', newPath);
         setTimeout(() => scrollToSection(redirectSection, false), 100);
     } else {
-        // Check URL path for section
         const initialSection = getSectionFromPath();
         if (initialSection) {
             setTimeout(() => scrollToSection(initialSection, false), 100);
@@ -135,7 +144,6 @@ function initTheme() {
 }
 
 // Navbar Scroll & Section Highlighting with URL sync
-let isUserScrolling = true;
 let scrollTimeout;
 
 function initNavbar() {
@@ -147,7 +155,7 @@ function initNavbar() {
         // Toggle Scrolled Class
         navbar.classList.toggle('scrolled', window.scrollY > 50);
 
-        // Highlight Active Section Link & update URL
+        // Highlight Active Section Link
         let current = '';
         sections.forEach(sec => {
             const top = sec.offsetTop - 120;
@@ -162,7 +170,8 @@ function initNavbar() {
         });
 
         // Update URL silently while scrolling (debounced)
-        if (isUserScrolling) {
+        // Only when user is manually scrolling, NOT during programmatic scroll
+        if (!isProgrammaticScroll) {
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
                 if (current === 'hero' || current === '') {
@@ -170,7 +179,7 @@ function initNavbar() {
                 } else if (current) {
                     replaceURL(current);
                 }
-            }, 150);
+            }, 200);
         }
     });
 }
@@ -185,8 +194,6 @@ function initMobileMenu() {
         menu.classList.toggle('active');
         document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     });
-
-    // Mobile link clicks are handled by the router via data-section
 }
 
 // Typewriter Effect
@@ -215,12 +222,12 @@ function initTypewriter() {
         let speed = isDeleting ? 40 : 85;
 
         if (!isDeleting && charIdx > currentWord.length) {
-            speed = 2000; // Pause at the end of the word
+            speed = 2000;
             isDeleting = true;
         } else if (isDeleting && charIdx < 0) {
             isDeleting = false;
             wordIdx = (wordIdx + 1) % texts.length;
-            speed = 500; // Pause before starting next word
+            speed = 500;
         }
         setTimeout(type, speed);
     }
