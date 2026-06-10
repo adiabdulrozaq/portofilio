@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
     initTheme();
+    initRouter();
     initNavbar();
     initMobileMenu();
     initTypewriter();
@@ -10,6 +11,114 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initBackToTop();
 });
+
+// ===== Router (History API) =====
+const BASE_PATH = getBasePath();
+
+function getBasePath() {
+    // Detect base path from <base> tag or default to /portofilio/
+    // Works both locally (e.g., /portofolio/) and on GitHub Pages (e.g., /portofilio/)
+    const path = window.location.pathname;
+    const segments = ['about', 'skills', 'experience', 'projects', 'contact'];
+    for (const seg of segments) {
+        const idx = path.indexOf('/' + seg);
+        if (idx !== -1) {
+            return path.substring(0, idx + 1);
+        }
+    }
+    // If no section found in URL, return current path as base
+    // Make sure it ends with /
+    return path.endsWith('/') ? path : path + '/';
+}
+
+function getSectionFromPath() {
+    const path = window.location.pathname;
+    const segments = ['about', 'skills', 'experience', 'projects', 'contact'];
+    for (const seg of segments) {
+        if (path.endsWith('/' + seg) || path.endsWith('/' + seg + '/')) {
+            return seg;
+        }
+    }
+    return null;
+}
+
+function scrollToSection(sectionId, smooth = true) {
+    if (sectionId === 'hero' || !sectionId) {
+        window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+        return;
+    }
+    const el = document.getElementById(sectionId);
+    if (el) {
+        const navbarHeight = document.getElementById('navbar').offsetHeight;
+        const top = el.offsetTop - navbarHeight - 10;
+        window.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
+    }
+}
+
+function updateURL(sectionId) {
+    const newPath = sectionId === 'hero' || !sectionId
+        ? BASE_PATH
+        : BASE_PATH + sectionId;
+
+    if (window.location.pathname !== newPath) {
+        history.pushState({ section: sectionId }, '', newPath);
+    }
+}
+
+function replaceURL(sectionId) {
+    const newPath = sectionId === 'hero' || !sectionId
+        ? BASE_PATH
+        : BASE_PATH + sectionId;
+
+    if (window.location.pathname !== newPath) {
+        history.replaceState({ section: sectionId }, '', newPath);
+    }
+}
+
+function initRouter() {
+    // Intercept all clicks on links with data-section
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('[data-section]');
+        if (!link) return;
+
+        e.preventDefault();
+        const section = link.getAttribute('data-section');
+
+        updateURL(section);
+        scrollToSection(section, true);
+
+        // Close mobile menu if open
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('mobileMenu');
+        if (menu && menu.classList.contains('active')) {
+            toggle.classList.remove('active');
+            menu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', (e) => {
+        const section = e.state?.section || getSectionFromPath();
+        scrollToSection(section, true);
+    });
+
+    // On initial load, check for redirect from 404.html first
+    const redirectSection = sessionStorage.getItem('redirect_section');
+    if (redirectSection) {
+        sessionStorage.removeItem('redirect_section');
+        // Restore the clean URL
+        const newPath = BASE_PATH + redirectSection;
+        history.replaceState({ section: redirectSection }, '', newPath);
+        setTimeout(() => scrollToSection(redirectSection, false), 100);
+    } else {
+        // Check URL path for section
+        const initialSection = getSectionFromPath();
+        if (initialSection) {
+            setTimeout(() => scrollToSection(initialSection, false), 100);
+        }
+    }
+}
 
 // Theme Toggle
 function initTheme() {
@@ -25,7 +134,10 @@ function initTheme() {
     });
 }
 
-// Navbar Scroll & Section Highlighting
+// Navbar Scroll & Section Highlighting with URL sync
+let isUserScrolling = true;
+let scrollTimeout;
+
 function initNavbar() {
     const navbar = document.getElementById('navbar');
     const links = document.querySelectorAll('.nav-link');
@@ -35,7 +147,7 @@ function initNavbar() {
         // Toggle Scrolled Class
         navbar.classList.toggle('scrolled', window.scrollY > 50);
 
-        // Highlight Active Section Link
+        // Highlight Active Section Link & update URL
         let current = '';
         sections.forEach(sec => {
             const top = sec.offsetTop - 120;
@@ -45,9 +157,21 @@ function initNavbar() {
         });
 
         links.forEach(link => {
-            const href = link.getAttribute('href').substring(1);
-            link.classList.toggle('active', href === current);
+            const section = link.getAttribute('data-section');
+            link.classList.toggle('active', section === current);
         });
+
+        // Update URL silently while scrolling (debounced)
+        if (isUserScrolling) {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (current === 'hero' || current === '') {
+                    replaceURL(null);
+                } else if (current) {
+                    replaceURL(current);
+                }
+            }, 150);
+        }
     });
 }
 
@@ -55,7 +179,6 @@ function initNavbar() {
 function initMobileMenu() {
     const toggle = document.getElementById('menuToggle');
     const menu = document.getElementById('mobileMenu');
-    const links = document.querySelectorAll('.mobile-link');
 
     toggle.addEventListener('click', () => {
         toggle.classList.toggle('active');
@@ -63,13 +186,7 @@ function initMobileMenu() {
         document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     });
 
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            toggle.classList.remove('active');
-            menu.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
+    // Mobile link clicks are handled by the router via data-section
 }
 
 // Typewriter Effect
@@ -218,5 +335,6 @@ function initBackToTop() {
 
     btn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        replaceURL(null);
     });
 }

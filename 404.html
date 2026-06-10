@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script>
+        // GitHub Pages SPA redirect hack
+        // When a user directly visits /portofilio/about (or any section path),
+        // GitHub Pages returns 404. This script redirects to index.html
+        // while preserving the path so the SPA router can handle it.
+        const path = window.location.pathname;
+        const search = window.location.search;
+        const hash = window.location.hash;
+        
+        // Redirect to the base URL with the path stored as a query parameter
+        // The main page will read this and navigate to the correct section
+        const basePath = '/portofilio/';
+        const section = path.replace(basePath, '').replace(/\/$/, '');
+        
+        if (section) {
+            // Redirect to index with section info preserved in sessionStorage
+            sessionStorage.setItem('redirect_section', section);
+            window.location.replace(basePath);
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
