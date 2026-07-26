@@ -65,22 +65,30 @@ function scrollToSection(sectionId, smooth = true) {
 }
 
 function updateURL(sectionId) {
-    const newPath = sectionId === 'hero' || !sectionId
-        ? BASE_PATH
-        : BASE_PATH + sectionId;
+    try {
+        const newPath = sectionId === 'hero' || !sectionId
+            ? BASE_PATH
+            : BASE_PATH + sectionId;
 
-    if (window.location.pathname !== newPath) {
-        history.pushState({ section: sectionId }, '', newPath);
+        if (window.location.pathname !== newPath) {
+            history.pushState({ section: sectionId }, '', newPath);
+        }
+    } catch (e) {
+        // Fallback for file:// protocol or restricted origins
     }
 }
 
 function replaceURL(sectionId) {
-    const newPath = sectionId === 'hero' || !sectionId
-        ? BASE_PATH
-        : BASE_PATH + sectionId;
+    try {
+        const newPath = sectionId === 'hero' || !sectionId
+            ? BASE_PATH
+            : BASE_PATH + sectionId;
 
-    if (window.location.pathname !== newPath) {
-        history.replaceState({ section: sectionId }, '', newPath);
+        if (window.location.pathname !== newPath) {
+            history.replaceState({ section: sectionId }, '', newPath);
+        }
+    } catch (e) {
+        // Fallback for file:// protocol or restricted origins
     }
 }
 
@@ -95,8 +103,8 @@ function initRouter() {
 
         const section = link.getAttribute('data-section');
 
-        updateURL(section);
         scrollToSection(section, true);
+        updateURL(section);
 
         // Close mobile menu if open
         const toggle = document.getElementById('menuToggle');
@@ -119,7 +127,9 @@ function initRouter() {
     if (redirectSection) {
         sessionStorage.removeItem('redirect_section');
         const newPath = BASE_PATH + redirectSection;
-        history.replaceState({ section: redirectSection }, '', newPath);
+        try {
+            history.replaceState({ section: redirectSection }, '', newPath);
+        } catch (e) {}
         setTimeout(() => scrollToSection(redirectSection, false), 100);
     } else {
         const initialSection = getSectionFromPath();
@@ -203,9 +213,7 @@ function initTypewriter() {
     
     const texts = [
         'Full Stack Developer',
-        'Software Engineer',
-        'UI/UX Enthusiast',
-        'Problem Solver'
+        'Software Engineer'
     ];
     let wordIdx = 0;
     let charIdx = 0;
@@ -238,7 +246,7 @@ function initTypewriter() {
 function initScrollReveal() {
     const items = document.querySelectorAll(
         '.section-title, .about-visual, .about-text, .about-details, .skill-card, ' +
-        '.tl-item, .edu-item, .cert-row, .project-card, .contact-left, .contact-form'
+        '.exp-item, .tl-item, .edu-item, .cert-row, .project-card, .contact-left, .contact-form'
     );
     
     items.forEach(el => el.classList.add('reveal'));

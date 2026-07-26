@@ -8,9 +8,9 @@
     <title>Adi Abdul Rozaq — Full Stack Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="styles.css?v=1.0.2">
+    <link rel="stylesheet" href="styles.css?v=2.0.0">
 </head>
 <body>
 
@@ -21,7 +21,9 @@
     <!-- Navbar -->
     <nav id="navbar" class="navbar">
         <div class="container nav-inner">
-            <a href="./" class="logo" data-section="hero"><span>&lt;</span>AAR<span>/&gt;</span></a>
+            <a href="./" class="logo" data-section="hero">
+                <span class="logo-bracket">&lt;</span>AAR<span class="logo-bracket">/&gt;</span>
+            </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="./about" class="nav-link" data-section="about">Tentang</a></li>
                 <li><a href="./skills" class="nav-link" data-section="skills">Keahlian</a></li>
@@ -54,13 +56,15 @@
     <header id="hero" class="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-
-                <h1 class="fade-up d1">Adi Abdul Rozaq</h1>
-                <p class="hero-role fade-up d2"><span id="typewriter"></span><span class="blink">|</span></p>
-                <p class="hero-desc fade-up d3">Full Stack Developer & Software Engineer dengan rekam jejak dalam membangun sistem informasi tangguh, dashboard analitis interaktif, dan aplikasi berbasis web yang responsif, aman, serta siap pakai untuk skala produksi.</p>
-
+                <div class="hero-badge fade-up d1">
+                    <span class="status-dot"></span>
+                    Terbuka untuk peluang baru
+                </div>
+                <h1 class="fade-up d2">Adi Abdul Rozaq</h1>
+                <p class="hero-role fade-up d3"><span id="typewriter"></span><span class="blink">|</span></p>
+                <p class="hero-desc fade-up d4">Full Stack Developer & Software Engineer dengan rekam jejak dalam membangun sistem informasi tangguh, dashboard analitis interaktif, dan aplikasi berbasis web yang responsif, aman, serta siap pakai untuk skala produksi.</p>
             </div>
-            <div class="hero-visual fade-up d2">
+            <div class="hero-visual fade-up d3">
                 <div class="code-window">
                     <div class="window-header">
                         <span class="window-dot red"></span>
@@ -82,7 +86,7 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </header>
 
     <!-- About -->
@@ -97,7 +101,7 @@
                 </div>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Saya adalah seorang <strong>Full Stack Developer</strong> lulusan <strong>Teknik Informatika</strong> dari <strong>Universitas Muhammadiyah Purwokerto (Cumlaude, IPK 3.59)</strong>. Dengan rekam jejak yang solid dalam memecahkan masalah rekayasa perangkat lunak melalui program Magang Nasional Kemnaker di Biro Perencanaan Kementerian Kelautan dan Perikanan serta Sekretariat Daerah Kabupaten Banjarnegara, saya mahir dalam membangun sistem dari awal hingga tahap deployment.</p>
+                        <p>Saya adalah seorang <strong>Full Stack Developer</strong> lulusan <strong>S1 Teknik Informatika</strong> dari <strong>Universitas Muhammadiyah Purwokerto (Cumlaude, IPK 3.59)</strong>. Dengan rekam jejak yang solid dalam memecahkan masalah rekayasa perangkat lunak melalui program Magang Nasional Kemnaker di Biro Perencanaan Kementerian Kelautan dan Perikanan serta Sekretariat Daerah Kabupaten Banjarnegara, saya mahir dalam membangun sistem dari awal hingga tahap deployment.</p>
                         <p>Saya memiliki keahlian mendalam pada ekosistem JavaScript modern (React.js, Node.js) dan PHP (Laravel), dengan fokus utama pada perancangan arsitektur database relasional yang optimal, pengembangan RESTful API yang aman, serta implementasi interface pengguna yang intuitif.</p>
                         <p>Di setiap baris kode yang saya tulis, saya senantiasa memprioritaskan prinsip <strong>Clean Code</strong>, kemudahan pemeliharaan (<strong>maintainability</strong>), skalabilitas sistem (<strong>scalability</strong>), serta optimasi performa demi menghadirkan <strong>user experience</strong> yang luar biasa dan bernilai nyata.</p>
                     </div>
@@ -123,21 +127,21 @@
         <div class="container">
             <h2 class="section-title">Keahlian Teknis</h2>
             <div class="skills-grid">
-                <div class="skill-card">
+                <div class="skill-card" data-tilt>
                     <div class="skill-icon frontend"><i data-lucide="monitor"></i></div>
                     <h3>Frontend</h3>
                     <ul class="skill-tags">
                         <li>HTML5 / CSS3</li><li>JavaScript</li><li>React.js / Next.js</li><li>TypeScript</li><li>Bootstrap</li><li>Vue</li><li>Tailwind CSS</li>
                     </ul>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-tilt>
                     <div class="skill-icon backend"><i data-lucide="server"></i></div>
                     <h3>Backend</h3>
                     <ul class="skill-tags">
                         <li>PHP / Laravel</li><li>Node.js / Express</li><li>MySQL / PostgreSQL</li><li>REST API</li><li>Golang</li>
                     </ul>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-tilt>
                     <div class="skill-icon tools"><i data-lucide="wrench"></i></div>
                     <h3>Tools & DevOps</h3>
                     <ul class="skill-tags">
@@ -167,7 +171,7 @@
                             </ul>
                         </div>
                         <div class="exp-item">
-                            <p class="exp-header"><strong>September 2025 – Mei 2026 | Magang Nasional Kemmaker | Biro Perencanaan, Kementerian Kelautan dan Perikanan</strong></p>
+                            <p class="exp-header"><strong>September 2025 – Mei 2026 | Magang Nasional Kemnaker | Biro Perencanaan, Kementerian Kelautan dan Perikanan</strong></p>
                             <ul class="exp-bullets">
                                 <li>Mengembangkan Sistem Dashboard Program Prioritas Presiden.</li>
                                 <li>Mengembangkan Sistem Survei & Analitik KNMP, mengintegrasikan pengumpulan data berbasis kuesioner dengan dasbor analitis, memungkinkan pengumpulan data terstruktur dari lapangan, meningkatkan akurasi data, dan mendukung analisis komprehensif dari 1.269 lokasi kandidat di 37 provinsi.</li>
@@ -189,7 +193,6 @@
                             <p class="edu-award"><i data-lucide="award"></i> IPK: 3.59 / 4.00 — Cumlaude</p>
                         </div>
                     </div>
-
 
                     <h3 class="sub-title mt-32"><i data-lucide="award"></i> Sertifikasi & Penghargaan</h3>
                     <div class="cert-list">
@@ -303,10 +306,16 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-inner">
-            <p>&copy; 2026 Adi Abdul Rozaq</p>
+            <p>&copy; 2026 Adi Abdul Rozaq. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            </div>
+        </div>
     </footer>
 
     <button id="backToTop" class="back-to-top" aria-label="Ke atas"><i data-lucide="arrow-up"></i></button>
-    <script src="script.js?v=1.0.1"></script>
+    <script src="script.js?v=2.0.0"></script>
 </body>
 </html>
