@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectFilter();
     initContactForm();
     initBackToTop();
+    initTiltEffect();
 });
 
 // ===== Router (History API) =====
@@ -312,7 +313,8 @@ function initContactForm() {
         btn.disabled = true;
 
         try {
-            const res = await fetch(form.action, {
+            const ajaxUrl = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+            const res = await fetch(ajaxUrl, {
                 method: 'POST',
                 body: new FormData(form),
                 headers: { 'Accept': 'application/json' }
@@ -323,7 +325,7 @@ function initContactForm() {
                 btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
                 form.reset();
             } else {
-                throw new Error();
+                throw new Error('Gagal mengirim');
             }
         } catch {
             btn.innerHTML = '✕ Gagal Mengirim';
@@ -351,5 +353,45 @@ function initBackToTop() {
     btn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         replaceURL(null);
+    });
+}
+
+// ===== Interactive 3D Mouse Tilt Effect =====
+function initTiltEffect() {
+    const tiltElements = document.querySelectorAll('.code-window, [data-tilt]');
+
+    tiltElements.forEach(el => {
+        const onMouseMove = (e) => {
+            const bounds = el.getBoundingClientRect();
+            const mouseX = e.clientX - bounds.left;
+            const mouseY = e.clientY - bounds.top;
+
+            // Normalize mouse position relative to center (-1 to +1)
+            const xPct = (mouseX / bounds.width - 0.5) * 2;
+            const yPct = (mouseY / bounds.height - 0.5) * 2;
+
+            // Maximum tilt angle (degrees)
+            const maxRotateX = 14;
+            const maxRotateY = 14;
+
+            const rotateX = -yPct * maxRotateX;
+            const rotateY = xPct * maxRotateY;
+
+            el.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`;
+            el.style.transition = 'transform 0.08s ease-out';
+        };
+
+        const onMouseEnter = () => {
+            el.style.transition = 'transform 0.08s ease-out';
+        };
+
+        const onMouseLeave = () => {
+            el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            el.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+        };
+
+        el.addEventListener('mousemove', onMouseMove);
+        el.addEventListener('mouseenter', onMouseEnter);
+        el.addEventListener('mouseleave', onMouseLeave);
     });
 }
