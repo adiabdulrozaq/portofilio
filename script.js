@@ -317,6 +317,9 @@ function initContactForm() {
             const formData = new FormData(form);
             const payload = {};
             formData.forEach((val, key) => { payload[key] = val; });
+            if (payload.name) {
+                payload._subject = `[PORTOFOLIO] Pesan Baru dari ${payload.name}`;
+            }
 
             const res = await fetch(ajaxUrl, {
                 method: 'POST',
