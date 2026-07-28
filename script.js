@@ -314,22 +314,37 @@ function initContactForm() {
 
         try {
             const ajaxUrl = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+            const formData = new FormData(form);
+            const payload = {};
+            formData.forEach((val, key) => { payload[key] = val; });
+
             const res = await fetch(ajaxUrl, {
                 method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json' 
+                },
+                body: JSON.stringify(payload)
             });
 
-            if (res.ok) {
+            const data = await res.json().catch(() => ({}));
+
+            if (res.ok && (data.success === "true" || data.success === true)) {
                 btn.innerHTML = '✓ Pesan Terkirim!';
                 btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
                 form.reset();
+            } else if (data.message && data.message.toLowerCase().includes('activation')) {
+                btn.innerHTML = '⚠️ Perlu Aktivasi Email!';
+                btn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+                alert('PENTING DARI FORMSUBMIT:\n\nSilakan cek Inbox atau folder Spam di Gmail (adiabdulrozaq15@gmail.com) dan klik tombol "Activate Form".\n\nSetelah diaktifkan sekali, pesan dari portofolio akan langsung otomatis masuk ke email Anda!');
             } else {
-                throw new Error('Gagal mengirim');
+                // Fallback to native form submit to trigger FormSubmit activation/thank you page
+                form.submit();
+                return;
             }
         } catch {
-            btn.innerHTML = '✕ Gagal Mengirim';
-            btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+            form.submit();
+            return;
         }
 
         setTimeout(() => {
@@ -337,7 +352,7 @@ function initContactForm() {
             btn.style.background = '';
             btn.disabled = false;
             lucide.createIcons();
-        }, 3000);
+        }, 5000);
     });
 }
 
