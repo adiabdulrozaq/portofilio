@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portofolio profesional Adi Abdul Rozaq — Full Stack Developer & Software Engineer. Berpengalaman dalam merancang, membangun, dan mengoptimalkan sistem informasi pemerintahan dan dashboard program prioritas nasional.">
+    <meta name="description" content="Portofolio profesional Adi Abdul Rozaq — Full Stack Developer & Software Engineer. Berpengalaman dalam merancang dan membangun aplikasi web modern, dashboard analitik, dan sistem skala produksi.">
     <meta name="author" content="Adi Abdul Rozaq">
-    <title>Adi Abdul Rozaq — Full Stack Developer</title>
+    <title>Adi Abdul Rozaq — Full Stack Developer & Software Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="styles.css?v=2.1.0">
+    <link rel="stylesheet" href="styles.css?v=3.2.0">
 </head>
 <body>
 
-    <!-- Background Glows -->
-    <div class="blob-glow blob-1"></div>
-    <div class="blob-glow blob-2"></div>
-
-    <!-- Navbar -->
+    <!-- Header & Navigation -->
     <nav id="navbar" class="navbar">
         <div class="container nav-inner">
             <a href="./" class="logo" data-section="hero">
-                <span class="logo-bracket">&lt;</span>AAR<span class="logo-bracket">/&gt;</span>
+                <span class="logo-name">Adi Abdul Rozaq</span>
+                <span class="logo-role">Software Engineer</span>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="./about" class="nav-link" data-section="about">Tentang</a></li>
@@ -36,14 +33,14 @@
                     <i data-lucide="sun" class="sun"></i>
                     <i data-lucide="moon" class="moon"></i>
                 </button>
-                <button id="menuToggle" class="hamburger" aria-label="Menu">
+                <button id="menuToggle" class="hamburger" aria-label="Menu navigasi">
                     <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Navigation Drawer -->
     <div id="mobileMenu" class="mobile-menu">
         <a href="./about" class="mobile-link" data-section="about">Tentang</a>
         <a href="./skills" class="mobile-link" data-section="skills">Keahlian</a>
@@ -52,51 +49,76 @@
         <a href="./contact" class="mobile-link" data-section="contact">Kontak</a>
     </div>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <header id="hero" class="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <div class="hero-badge fade-up d1">
-                    <span class="status-dot"></span>
-                    Terbuka untuk peluang baru
+                <div class="hero-status">
+                    <span class="status-pulse"></span>
+                    <span>Full Stack Developer &amp; Software Engineer</span>
                 </div>
-                <h1 class="fade-up d2">Adi Abdul Rozaq</h1>
-                <p class="hero-role fade-up d3"><span id="typewriter"></span><span class="blink">|</span></p>
-                <p class="hero-desc fade-up d4">Full Stack Developer & Software Engineer dengan rekam jejak dalam membangun sistem informasi tangguh, dashboard analitis interaktif, dan aplikasi berbasis web yang responsif, aman, serta siap pakai untuk skala produksi.</p>
+                <h1 class="hero-title">Adi Abdul Rozaq</h1>
+                <p class="hero-lead">Membangun Aplikasi Web Modern, Dashboard Data, &amp; Sistem Skala Produksi.</p>
+                <p class="hero-desc">Berpengalaman dalam merancang arsitektur web full stack, integrasi RESTful API yang andal, serta antarmuka interaktif yang aman — mulai dari platform analitik data berskala nasional hingga aplikasi web komersial.</p>
+                <div class="hero-cta">
+                    <a href="./projects" class="btn-primary" data-section="projects">
+                        <span>Lihat Proyek Pilihan</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="./contact" class="btn-ghost" data-section="contact">
+                        <i data-lucide="mail"></i>
+                        <span>Hubungi Saya</span>
+                    </a>
+                </div>
             </div>
-            <div class="hero-visual fade-up d3">
-                <div class="code-window">
-                    <div class="window-header">
-                        <span class="window-dot red"></span>
-                        <span class="window-dot yellow"></span>
-                        <span class="window-dot green"></span>
-                        <span class="window-title">developer.js</span>
-                    </div>
-                    <div class="window-body">
-                        <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = {
-  name: <span class="string">'Adi Abdul Rozaq'</span>,
-  role: <span class="string">'Full Stack Developer'</span>,
-  experience: <span class="number">1.5</span>, <span class="comment">// years</span>
-  skills: [
-    <span class="string">'Laravel'</span>, <span class="string">'React.js'</span>, 
-    <span class="string">'MySQL'</span>, <span class="string">'Tailwind CSS'</span>
-  ],
-  passion: <span class="string">'Clean Code & Performance'</span>
-};</code></pre>
+            
+            <!-- Professional Architecture Card -->
+            <div class="hero-visual">
+                <div class="system-card">
+                    <div class="system-body">
+                        <div class="system-row">
+                            <span class="system-label">Fokus Keahlian</span>
+                            <span class="system-val">Web &amp; App Development · Software Engineer</span>
+                        </div>
+                        <div class="system-row">
+                            <span class="system-label">Core Stack</span>
+                            <div class="tech-pills">
+                                <span>Laravel</span>
+                                <span>JavaScript</span>
+                                <span>TypeScript</span>
+                                <span>Python</span>
+                                <span>React Native</span>
+                                <span>Vue.js</span>
+                                <span>Node.js</span>
+                                <span>Golang</span>
+                                <span>MySQL</span>
+                            </div>
+                        </div>
+                        <div class="system-row">
+                            <span class="system-label">Rekam Jejak Produksi</span>
+                            <ul class="system-features">
+                                <li><strong>Dashboard Prioritas Nasional:</strong> Monitoring progres pembangunan KNMP &amp; kandidat lokasi KNMP (KKP RI)</li>
+                                <li><strong>e-SAKIP Banjarnegara:</strong> Sistem Akuntabilitas Kinerja Instansi Pemerintah Daerah</li>
+                                <li><strong>Zona Integritas (WBK):</strong> Pelacakan tata kelola &amp; transparansi organisasi</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- About -->
+    <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">Tentang Saya</h2>
+            <div class="section-header">
+                <span class="section-tag">PROFIL PROFESIONAL</span>
+                <h2 class="section-title">Tentang Saya</h2>
+            </div>
             <div class="about-grid">
                 <div class="about-visual">
                     <div class="photo-frame">
-                        <img src="profile.jpg" alt="Adi Abdul Rozaq" class="profile-photo">
+                        <img src="profile.jpg" alt="Foto Profil Adi Abdul Rozaq" class="profile-photo">
                     </div>
                 </div>
                 <div class="about-content">
@@ -110,47 +132,116 @@
         </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills Section -->
     <section id="skills" class="section bg-alt">
         <div class="container">
-            <h2 class="section-title">Keahlian Teknis</h2>
+            <div class="section-header">
+                <span class="section-tag">KOMPETENSI TEKNIS</span>
+                <h2 class="section-title">Keahlian &amp; Teknologi</h2>
+            </div>
             <div class="skills-grid">
-                <div class="skill-card" data-tilt>
-                    <div class="skill-icon frontend"><i data-lucide="monitor"></i></div>
-                    <h3>Frontend</h3>
+                <div class="skill-card">
+                    <div class="skill-card-top">
+                        <div class="skill-icon frontend"><i data-lucide="layout"></i></div>
+                        <div>
+                            <h3>Frontend Development</h3>
+                            <p class="skill-lead">Antarmuka responsif, performa tinggi, &amp; arsitektur komponen modular</p>
+                        </div>
+                    </div>
                     <ul class="skill-tags">
-                        <li>HTML5 / CSS3</li><li>JavaScript</li><li>React.js / Next.js</li><li>TypeScript</li><li>Bootstrap</li><li>Vue</li><li>Tailwind CSS</li>
+                        <li>HTML5 / Modern CSS3</li>
+                        <li>JavaScript (ES6+) &amp; TypeScript</li>
+                        <li>React.js &amp; Next.js</li>
+                        <li>Vue.js &amp; State Management</li>
+                        <li>Tailwind CSS &amp; Bootstrap</li>
                     </ul>
                 </div>
-                <div class="skill-card" data-tilt>
-                    <div class="skill-icon backend"><i data-lucide="server"></i></div>
-                    <h3>Backend</h3>
+                
+                <div class="skill-card">
+                    <div class="skill-card-top">
+                        <div class="skill-icon backend"><i data-lucide="database"></i></div>
+                        <div>
+                            <h3>Backend &amp; Arsitektur Data</h3>
+                            <p class="skill-lead">RESTful API yang aman, optimalisasi kueri, &amp; data model relasional</p>
+                        </div>
+                    </div>
                     <ul class="skill-tags">
-                        <li>PHP / Laravel</li><li>Node.js / Express</li><li>MySQL / PostgreSQL</li><li>REST API</li><li>Golang</li>
+                        <li>PHP &amp; Laravel Framework</li>
+                        <li>Node.js &amp; Express</li>
+                        <li>Golang (Go REST API)</li>
+                        <li>MySQL &amp; PostgreSQL</li>
+                        <li>API Authentication &amp; RBAC</li>
                     </ul>
                 </div>
-                <div class="skill-card" data-tilt>
-                    <div class="skill-icon tools"><i data-lucide="wrench"></i></div>
-                    <h3>Tools & DevOps</h3>
+
+                <div class="skill-card">
+                    <div class="skill-card-top">
+                        <div class="skill-icon tools"><i data-lucide="terminal"></i></div>
+                        <div>
+                            <h3>Tools &amp; Manajemen Proyek</h3>
+                            <p class="skill-lead">Standar kolaborasi tim, version control, &amp; pipeline deployment</p>
+                        </div>
+                    </div>
                     <ul class="skill-tags">
-                        <li>Git / GitHub</li><li>Jira</li><li>VS Code</li><li>Figma</li><li>Vercel</li>
+                        <li>Git &amp; GitHub Workflow</li>
+                        <li>Jira &amp; Metodologi Agile</li>
+                        <li>VS Code Environment</li>
+                        <li>Figma UI/UX Translation</li>
+                        <li>Vercel &amp; Web Hosting</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience -->
+    <!-- Experience & Education Section -->
     <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title">Pengalaman & Pendidikan</h2>
+            <div class="section-header">
+                <span class="section-tag">REKAM JEJAK</span>
+                <h2 class="section-title">Pengalaman &amp; Pendidikan</h2>
+            </div>
+            
             <div class="two-col">
-                <!-- Work -->
+                <!-- Work Experience -->
                 <div>
-                    <h3 class="sub-title"><i data-lucide="briefcase"></i> Pengalaman Kerja</h3>
+                    <h3 class="column-title"><i data-lucide="briefcase"></i> Pengalaman Kerja</h3>
                     <div class="experience-list">
                         <div class="exp-item">
-                            <p class="exp-header"><strong>Januari 2025 – September 2025 | Magang | Sekretariat Daerah Kabupaten Banjarnegara</strong></p>
+                            <div class="exp-top">
+                                <span class="exp-period">Nov 2025 – Mei 2026</span>
+                                <span class="exp-badge">Magang Nasional Kemnaker</span>
+                            </div>
+                            <h4 class="exp-role">Software Engineer &amp; Full Stack Developer</h4>
+                            <p class="exp-company">Biro Perencanaan, Kementerian Kelautan dan Perikanan</p>
+                            <ul class="exp-bullets">
+                                <li>Mengembangkan Sistem Dashboard Program Prioritas Presiden.</li>
+                                <li>Mengembangkan Sistem Survei &amp; Analitik KNMP, mengintegrasikan pengumpulan data berbasis kuesioner dengan dasbor analitis, memungkinkan pengumpulan data terstruktur dari lapangan, meningkatkan akurasi data, dan mendukung analisis komprehensif dari 1.269 lokasi kandidat di 37 provinsi.</li>
+                                <li>Mengembangkan Sistem Pemantauan Zona Integritas (WBK), memungkinkan pelacakan indikator tata kelola yang terstruktur, meningkatkan transparansi proses, dan mendukung akuntabilitas dan kepatuhan dalam alur kerja organisasi.</li>
+                                <li>Membuat Sistem Budidaya Tematik, Sistem informasi berbasis web yang dirancang untuk pendataan, monitoring progres, dan survei terintegrasi terkait lokasi program budidaya di berbagai wilayah/desa.</li>
+                            </ul>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="exp-top">
+                                <span class="exp-period">Nov 2025</span>
+                                <span class="exp-badge">Freelance</span>
+                            </div>
+                            <h4 class="exp-role">Freelance Full Stack Developer</h4>
+                            <p class="exp-company">Proyek Platform E-Commerce</p>
+                            <ul class="exp-bullets">
+                                <li><strong>Pengembangan Website E-Commerce:</strong> Merancang dan membangun platform e-commerce secara menyeluruh dengan alur transaksi digital dan manajemen operasional toko real-time.</li>
+                                <li><strong>Tech Stack &amp; Integrasi:</strong> Menggunakan Vue.js + Tailwind CSS untuk antarmuka pengguna yang responsif serta Golang pada backend untuk platform API yang cepat dan handal.</li>
+                            </ul>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="exp-top">
+                                <span class="exp-period">Jan 2025 – Okt 2025</span>
+                                <span class="exp-badge">Magang Instansi</span>
+                            </div>
+                            <h4 class="exp-role">Web Application Assistant</h4>
+                            <p class="exp-company">Sekretariat Daerah Kabupaten Banjarnegara</p>
                             <ul class="exp-bullets">
                                 <li>Bertanggung jawab membantu pendampingan terhadap penanganan aplikasi e-SAKIP berbasis website.</li>
                                 <li><strong>Manajemen Aplikasi</strong> – Memastikan situs web berjalan secara optimal dan memperbarui konten.</li>
@@ -158,134 +249,248 @@
                                 <li><strong>Koordinasi dengan Team</strong> – Mengkomunikasikan kebutuhan perubahan dan meninjau hasil implementasi.</li>
                             </ul>
                         </div>
-                        <div class="exp-item">
-                            <p class="exp-header"><strong>September 2025 – Mei 2026 | Magang Nasional Kemnaker | Biro Perencanaan, Kementerian Kelautan dan Perikanan</strong></p>
-                            <ul class="exp-bullets">
-                                <li>Mengembangkan Sistem Dashboard Program Prioritas Presiden.</li>
-                                <li>Mengembangkan Sistem Survei & Analitik KNMP, mengintegrasikan pengumpulan data berbasis kuesioner dengan dasbor analitis, memungkinkan pengumpulan data terstruktur dari lapangan, meningkatkan akurasi data, dan mendukung analisis komprehensif dari 1.269 lokasi kandidat di 37 provinsi.</li>
-                                <li>Mengembangkan Sistem Pemantauan Zona Integritas (WBK), memungkinkan pelacakan indikator tata kelola yang terstruktur, meningkatkan transparansi proses, dan mendukung akuntabilitas dan kepatuhan dalam alur kerja organisasi.</li>
-                                <li>Membuat Sistem Budidaya Tematik, Sistem informasi berbasis web yang dirancang untuk pendataan, monitoring progres, dan survei terintegrasi terkait lokasi program budidaya di berbagai wilayah/desa.</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
-                <!-- Education & Certs -->
+
+                <!-- Education & Certifications -->
                 <div>
-                    <h3 class="sub-title"><i data-lucide="graduation-cap"></i> Pendidikan</h3>
-                    <div class="edu-item">
-                        <div class="edu-badge">S1</div>
-                        <div>
-                            <span class="tl-date">2021 — 2025</span>
-                            <h4>Sarjana Teknik Informatika</h4>
-                            <p class="tl-place">Universitas Muhammadiyah Purwokerto</p>
-                            <p class="edu-award"><i data-lucide="award"></i> IPK: 3.59 / 4.00 — Cumlaude</p>
+                    <h3 class="column-title"><i data-lucide="graduation-cap"></i> Pendidikan Formal</h3>
+                    <div class="edu-card">
+                        <div class="edu-top">
+                            <span class="edu-level">STRATA 1 (S1)</span>
+                            <span class="edu-year">2021 — 2025</span>
+                        </div>
+                        <h4 class="edu-title">Sarjana Teknik Informatika</h4>
+                        <p class="edu-univ">Universitas Muhammadiyah Purwokerto</p>
+                        <div class="edu-achievement">
+                            <i data-lucide="award"></i>
+                            <span>IPK: 3.59 / 4.00 — Predikat Cumlaude</span>
                         </div>
                     </div>
 
-                    <h3 class="sub-title mt-32"><i data-lucide="award"></i> Sertifikasi & Penghargaan</h3>
+                    <h3 class="column-title mt-section"><i data-lucide="check-check"></i> Sertifikasi Profesi</h3>
                     <div class="cert-list">
-                        <div class="cert-row"><i data-lucide="check-circle" class="cert-ok"></i><div><strong>Programmer</strong><br><small>Badan Sertifikasi Nasional Profesi (BNSP) — Juli 2025</small></div></div>
-                        <div class="cert-row"><i data-lucide="check-circle" class="cert-ok"></i><div><strong>Certificate of English Proficiency</strong><br><small>LDC UMP — 2023</small></div></div>
-                        <div class="cert-row"><i data-lucide="check-circle" class="cert-ok"></i><div><strong>TOEFL</strong><br><small>Brighten English — Oktober 2025</small></div></div>
-                        <div class="cert-row"><i data-lucide="check-circle" class="cert-ok"></i><div><strong>Sertifikat Magang Nasional Kemnaker</strong><br><small>Biro Perencanaan | Kementerian Kelautan dan Perikanan — November 2025 - Mei 2026</small></div></div>
+                        <div class="cert-item">
+                            <div class="cert-icon"><i data-lucide="badge-check"></i></div>
+                            <div class="cert-details">
+                                <strong>Assistant Web Developer</strong>
+                                <span>BNSP LSP BBPVP Bekasi | Berlaku Jul 2026 – Jul 2029</span>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-icon"><i data-lucide="badge-check"></i></div>
+                            <div class="cert-details">
+                                <strong>Sertifikat Magang Nasional Kemnaker</strong>
+                                <span>Kementerian Kelautan dan Perikanan | Nov 2025 – Mei 2026</span>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-icon"><i data-lucide="badge-check"></i></div>
+                            <div class="cert-details">
+                                <strong>TOEFL Test Prediction</strong>
+                                <span>Brighten English | Okt 2025 – Okt 2027</span>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-icon"><i data-lucide="badge-check"></i></div>
+                            <div class="cert-details">
+                                <strong>Programmer</strong>
+                                <span>BNSP LSP UMP | Berlaku Jul 2025 – Jul 2028</span>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-icon"><i data-lucide="badge-check"></i></div>
+                            <div class="cert-details">
+                                <strong>Certificate of English Proficiency</strong>
+                                <span>LDC Universitas Muhammadiyah Purwokerto | 2023</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Projects Section -->
     <section id="projects" class="section bg-alt">
         <div class="container">
-            <h2 class="section-title">Proyek</h2>
+            <div class="section-header">
+                <span class="section-tag">PORTOFOLIO KARYA</span>
+                <h2 class="section-title">Proyek Pilihan</h2>
+            </div>
+            <p class="section-intro">Sistem informasi pemerintahan dan dashboard analitik berbasis web yang telah dirancang, dibangun, dan diimplementasikan untuk kebutuhan produksi nyata.</p>
+            
             <div class="projects-grid">
+                <!-- Project 1 -->
                 <div class="project-card">
                     <div class="proj-thumb">
-                        <img src="esakip.png" alt="Screenshot E-SAKIP" class="proj-img">
+                        <img src="esakip.png" alt="Screenshot E-SAKIP Banjarnegara" class="proj-img">
+                        <span class="proj-category">Pemerintah Daerah</span>
                     </div>
                     <div class="proj-info">
                         <h4>E-SAKIP Banjarnegara</h4>
                         <p>Sistem akuntabilitas kinerja instansi digital Kabupaten Banjarnegara yang mengelola dokumen perencanaan strategis, indikator kinerja, pelaporan tahunan, dan evaluasi berkala guna mendukung transparansi tata kelola pemerintahan.</p>
-                        <div class="tags"><span>PHP</span><span>MySQL</span></div>
+                        <div class="tags">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>Web App</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Project 2 -->
                 <div class="project-card">
                     <div class="proj-thumb">
                         <img src="knmp.png" alt="Screenshot Dashboard KNMP" class="proj-img">
+                        <span class="proj-category">Kementerian Kelautan &amp; Perikanan</span>
                     </div>
                     <div class="proj-info">
                         <h4>Dashboard Monitoring KNMP</h4>
                         <p>Sistem dashboard analitis Kampung Nelayan Modern (KNMP) berbasis web untuk monitoring, evaluasi, dan pelacakan program prioritas Presiden. Mengintegrasikan survei analitik kandidat lokasi di 37 provinsi dan menyajikan visualisasi data yang komprehensif.</p>
-                        <div class="tags"><span>PHP/Laravel</span><span>MySQL</span><span>Bootstrap</span><span>Chart.js</span></div>
+                        <div class="tags">
+                            <span>Laravel</span>
+                            <span>MySQL</span>
+                            <span>Bootstrap</span>
+                            <span>Chart.js</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Project 3 -->
                 <div class="project-card">
                     <div class="proj-thumb">
                         <img src="budidaya.png" alt="Screenshot Dashboard Budidaya Tematik" class="proj-img">
+                        <span class="proj-category">Sistem Informasi Tematik</span>
                     </div>
                     <div class="proj-info">
                         <h4>Dashboard Budidaya Tematik Bioflok</h4>
-                        <p>Aplikasi monitoring terintegrasi berbasis web untuk pemantauan, survei lapangan, dan pendataan progres lokasi program budidaya tematik perikanan (lele, udang, dll) guna memfasilitasi pengambilan keputusan berbasis data real-time.</p>
-                        <div class="tags"><span>PHP/Laravel</span><span>MySQL</span><span>Bootstrap</span><span>Chart.js</span></div>
+                        <p>Aplikasi monitoring terintegrasi berbasis web untuk pemantauan, survei lapangan, dan pendataan progres lokasi program budidaya tematik perikanan guna memfasilitasi pengambilan keputusan berbasis data real-time.</p>
+                        <div class="tags">
+                            <span>Laravel</span>
+                            <span>MySQL</span>
+                            <span>Bootstrap</span>
+                            <span>Chart.js</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Project 4 -->
                 <div class="project-card">
                     <div class="proj-thumb">
                         <img src="bins.png" alt="Screenshot Dashboard BINS" class="proj-img">
+                        <span class="proj-category">Sistem Prioritas Nasional</span>
                     </div>
                     <div class="proj-info">
                         <h4>BINS (Budidaya Ikan Nila Salin)</h4>
                         <p>Sistem dashboard monitoring program prioritas berbasis web untuk pemantauan sebaran Budidaya Ikan Nila Salin (BINS) di seluruh wilayah Indonesia, dilengkapi visualisasi data analitis secara interaktif.</p>
-                        <div class="tags"><span>React</span><span>MySQL</span><span>Bootstrap</span><span>Tailwind CSS</span><span>Node JS</span><span>Chart.js</span></div>
+                        <div class="tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>Tailwind CSS</span>
+                            <span>Chart.js</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Project 5 -->
                 <div class="project-card">
                     <div class="proj-thumb">
                         <img src="wbk.png" alt="Screenshot Dashboard WBK" class="proj-img">
+                        <span class="proj-category">Zona Integritas</span>
                     </div>
                     <div class="proj-info">
                         <h4>Wilayah Bebas Korupsi (WBK)</h4>
                         <p>Sistem informasi pemantauan zona integritas dan evaluasi program Wilayah Bebas Korupsi (WBK) guna memfasilitasi pelacakan indikator tata kelola, transparansi publik, dan akuntabilitas organisasi.</p>
-                        <div class="tags"><span>Laravel</span><span>MySQL</span><span>Bootstrap</span><span>Chart.js</span></div>
+                        <div class="tags">
+                            <span>Laravel</span>
+                            <span>MySQL</span>
+                            <span>Bootstrap</span>
+                            <span>Chart.js</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Project 6 -->
                 <div class="project-card">
                     <div class="proj-thumb">
                         <img src="portal.png" alt="Screenshot Portal Roren" class="proj-img">
+                        <span class="proj-category">Portal Terpadu</span>
                     </div>
                     <div class="proj-info">
                         <h4>Portal Roren KKP</h4>
                         <p>Portal web terpusat yang mengintegrasikan seluruh aplikasi dan sistem informasi internal di lingkungan Biro Perencanaan Kementerian Kelautan dan Perikanan guna meningkatkan efisiensi alur kerja.</p>
-                        <div class="tags"><span>JavaScript</span><span>CSS/CSS3</span><span>HTML5</span></div>
+                        <div class="tags">
+                            <span>JavaScript</span>
+                            <span>CSS3</span>
+                            <span>HTML5</span>
+                            <span>Integration</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title">Kontak</h2>
+            <div class="section-header">
+                <span class="section-tag">KOLABORASI &amp; KARIR</span>
+                <h2 class="section-title">Kontak</h2>
+            </div>
+            
             <div class="contact-grid">
                 <div class="contact-left">
-                    <h3>Mari Terhubung</h3>
-                    <p>Saya selalu terbuka untuk mendiskusikan peluang kerja, proyek freelance, atau kolaborasi menarik lainnya.</p>
+                    <h3>Mari Membicarakan Peluang Kolaborasi</h3>
+                    <p>Saya terbuka untuk mendiskusikan peluang kerja penuh waktu (full-time), kontrak rekayasa perangkat lunak, maupun konsultasi pengembangan sistem web.</p>
+                    
                     <div class="contact-list">
-                        <a href="mailto:adiabdulrozaq15@gmail.com" class="contact-row"><i data-lucide="mail"></i><div><small>Email</small>adiabdulrozaq15@gmail.com</div></a>
-                        <a href="https://wa.me/6288232893925" class="contact-row"><i data-lucide="phone"></i><div><small>WhatsApp</small>+62 882-3289-3925</div></a>
-                        <div class="contact-row"><i data-lucide="map-pin"></i><div><small>Lokasi</small>Sokayasa, Banjarnegara, Jawa Tengah</div></div>
+                        <a href="mailto:adiabdulrozaq15@gmail.com" class="contact-row">
+                            <div class="row-icon"><i data-lucide="mail"></i></div>
+                            <div>
+                                <small>Email Resmi</small>
+                                <span>adiabdulrozaq15@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/6288232893925" target="_blank" rel="noopener" class="contact-row">
+                            <div class="row-icon"><i data-lucide="message-square"></i></div>
+                            <div>
+                                <small>WhatsApp / Seluler</small>
+                                <span>+62 882-3289-3925</span>
+                            </div>
+                        </a>
+                        <div class="contact-row">
+                            <div class="row-icon"><i data-lucide="map-pin"></i></div>
+                            <div>
+                                <small>Domisili / Lokasi</small>
+                                <span>Banjarnegara, Jawa Tengah, Indonesia</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
                 <form id="contactForm" class="contact-form" action="https://formsubmit.co/adiabdulrozaq15@gmail.com" method="POST">
                     <input type="hidden" name="_subject" value="[PORTOFOLIO] Pesan Baru dari Pengunjung Web">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
                     <input type="text" name="_honey" style="display:none">
-                    <div class="field"><label for="name">Nama</label><input type="text" id="name" name="name" placeholder="Nama lengkap" required></div>
-                    <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="Alamat email" required></div>
-                    <div class="field"><label for="message">Pesan</label><textarea id="message" name="message" placeholder="Tulis pesan..." rows="4" required></textarea></div>
-                    <button type="submit" id="submitBtn" class="btn-primary full"><i data-lucide="send"></i> Kirim Pesan</button>
+                    
+                    <div class="field">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="nama@perusahaan.com" required>
+                    </div>
+                    <div class="field">
+                        <label for="message">Pesan / Diskusi Proyek</label>
+                        <textarea id="message" name="message" placeholder="Tuliskan kebutuhan sistem, pertanyaan, atau penawaran kerja sama..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" id="submitBtn" class="btn-primary full">
+                        <span>Kirim Pesan</span>
+                        <i data-lucide="send"></i>
+                    </button>
                 </form>
             </div>
         </div>
@@ -293,17 +498,12 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-inner">
-            <p>&copy; 2026 Adi Abdul Rozaq. All rights reserved.</p>
-            <div class="footer-social">
-                <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-                <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
-                <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-            </div>
+        <div class="container footer-content">
+            <p class="footer-copy">&copy; 2026 Adi Abdul Rozaq</p>
         </div>
     </footer>
 
-    <button id="backToTop" class="back-to-top" aria-label="Ke atas"><i data-lucide="arrow-up"></i></button>
-    <script src="script.js?v=2.1.0"></script>
+    <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas"><i data-lucide="arrow-up"></i></button>
+    <script src="script.js?v=3.2.0"></script>
 </body>
 </html>

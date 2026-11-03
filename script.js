@@ -1,16 +1,16 @@
-// ===== Portfolio JavaScript =====
+// ===== Portfolio JavaScript — Adi Abdul Rozaq =====
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
     initTheme();
     initRouter();
     initNavbar();
     initMobileMenu();
-    initTypewriter();
     initScrollReveal();
     initProjectFilter();
     initContactForm();
     initBackToTop();
-    initTiltEffect();
+    initSmoothHover();
+    initCursorGlow();
 });
 
 // ===== Router (History API) =====
@@ -44,7 +44,6 @@ function getSectionFromPath() {
 }
 
 function scrollToSection(sectionId, smooth = true) {
-    // Block scroll-based URL updates during programmatic scroll
     isProgrammaticScroll = true;
     clearTimeout(programmaticScrollTimer);
 
@@ -59,10 +58,9 @@ function scrollToSection(sectionId, smooth = true) {
         }
     }
 
-    // Re-enable scroll-based URL updates after scroll animation completes
     programmaticScrollTimer = setTimeout(() => {
         isProgrammaticScroll = false;
-    }, smooth ? 1000 : 300);
+    }, smooth ? 800 : 200);
 }
 
 function updateURL(sectionId) {
@@ -75,7 +73,7 @@ function updateURL(sectionId) {
             history.pushState({ section: sectionId }, '', newPath);
         }
     } catch (e) {
-        // Fallback for file:// protocol or restricted origins
+        // Fallback for file:// protocol or restricted environments
     }
 }
 
@@ -89,12 +87,12 @@ function replaceURL(sectionId) {
             history.replaceState({ section: sectionId }, '', newPath);
         }
     } catch (e) {
-        // Fallback for file:// protocol or restricted origins
+        // Fallback for file:// protocol
     }
 }
 
 function initRouter() {
-    // Intercept all clicks on links with data-section
+    // Intercept navigation clicks with data-section
     document.addEventListener('click', (e) => {
         const link = e.target.closest('[data-section]');
         if (!link) return;
@@ -117,13 +115,13 @@ function initRouter() {
         }
     });
 
-    // Handle browser back/forward
+    // Browser back/forward navigation
     window.addEventListener('popstate', (e) => {
         const section = e.state?.section || getSectionFromPath();
         scrollToSection(section, true);
     });
 
-    // On initial load, check for redirect from 404.html first
+    // Handle initial redirect or direct URL load
     const redirectSection = sessionStorage.getItem('redirect_section');
     if (redirectSection) {
         sessionStorage.removeItem('redirect_section');
@@ -131,18 +129,20 @@ function initRouter() {
         try {
             history.replaceState({ section: redirectSection }, '', newPath);
         } catch (e) {}
-        setTimeout(() => scrollToSection(redirectSection, false), 100);
+        setTimeout(() => scrollToSection(redirectSection, false), 80);
     } else {
         const initialSection = getSectionFromPath();
         if (initialSection) {
-            setTimeout(() => scrollToSection(initialSection, false), 100);
+            setTimeout(() => scrollToSection(initialSection, false), 80);
         }
     }
 }
 
-// Theme Toggle
+// ===== Theme Toggle =====
 function initTheme() {
     const toggle = document.getElementById('themeToggle');
+    if (!toggle) return;
+
     const saved = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', saved);
     
@@ -154,7 +154,7 @@ function initTheme() {
     });
 }
 
-// Navbar Scroll & Section Highlighting with URL sync
+// ===== Navbar Scroll & Active Section Highlighting =====
 let scrollTimeout;
 
 function initNavbar() {
@@ -163,13 +163,15 @@ function initNavbar() {
     const sections = document.querySelectorAll('section, header');
 
     window.addEventListener('scroll', () => {
-        // Toggle Scrolled Class
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
+        if (!navbar) return;
 
-        // Highlight Active Section Link
+        // Toggle background blur on scroll
+        navbar.classList.toggle('scrolled', window.scrollY > 40);
+
+        // Highlight active link based on scroll position
         let current = '';
         sections.forEach(sec => {
-            const top = sec.offsetTop - 120;
+            const top = sec.offsetTop - 140;
             if (window.scrollY >= top) {
                 current = sec.getAttribute('id') || '';
             }
@@ -180,8 +182,7 @@ function initNavbar() {
             link.classList.toggle('active', section === current);
         });
 
-        // Update URL silently while scrolling (debounced)
-        // Only when user is manually scrolling, NOT during programmatic scroll
+        // Update URL state during manual scroll (debounced)
         if (!isProgrammaticScroll) {
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
@@ -190,15 +191,16 @@ function initNavbar() {
                 } else if (current) {
                     replaceURL(current);
                 }
-            }, 200);
+            }, 180);
         }
     });
 }
 
-// Mobile Navigation
+// ===== Mobile Navigation Menu =====
 function initMobileMenu() {
     const toggle = document.getElementById('menuToggle');
     const menu = document.getElementById('mobileMenu');
+    if (!toggle || !menu) return;
 
     toggle.addEventListener('click', () => {
         toggle.classList.toggle('active');
@@ -207,47 +209,11 @@ function initMobileMenu() {
     });
 }
 
-// Typewriter Effect
-function initTypewriter() {
-    const el = document.getElementById('typewriter');
-    if (!el) return;
-    
-    const texts = [
-        'Full Stack Developer',
-        'Software Engineer'
-    ];
-    let wordIdx = 0;
-    let charIdx = 0;
-    let isDeleting = false;
-
-    function type() {
-        const currentWord = texts[wordIdx];
-        if (isDeleting) {
-            el.textContent = currentWord.substring(0, charIdx--);
-        } else {
-            el.textContent = currentWord.substring(0, charIdx++);
-        }
-
-        let speed = isDeleting ? 40 : 85;
-
-        if (!isDeleting && charIdx > currentWord.length) {
-            speed = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIdx < 0) {
-            isDeleting = false;
-            wordIdx = (wordIdx + 1) % texts.length;
-            speed = 500;
-        }
-        setTimeout(type, speed);
-    }
-    type();
-}
-
-// Scroll Reveal Animations
+// ===== Scroll Reveal Observer =====
 function initScrollReveal() {
     const items = document.querySelectorAll(
-        '.section-title, .about-visual, .about-text, .about-details, .skill-card, ' +
-        '.exp-item, .tl-item, .edu-item, .cert-row, .project-card, .contact-left, .contact-form'
+        '.section-header, .about-visual, .about-text, .skill-card, ' +
+        '.exp-item, .edu-card, .cert-item, .project-card, .contact-left, .contact-form, .system-card'
     );
     
     items.forEach(el => el.classList.add('reveal'));
@@ -257,22 +223,23 @@ function initScrollReveal() {
             if (entry.isIntersecting) {
                 setTimeout(() => {
                     entry.target.classList.add('visible');
-                }, i * 60);
+                }, i * 35);
                 observer.unobserve(entry.target);
             }
         });
     }, { 
-        threshold: 0.1, 
+        threshold: 0.08, 
         rootMargin: '0px 0px -40px 0px' 
     });
 
     items.forEach(el => observer.observe(el));
 }
 
-// Project Portfolio Filtering
+// ===== Project Filter Functionality (if filter bar exists) =====
 function initProjectFilter() {
     const btns = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.project-card');
+    if (!btns.length || !cards.length) return;
 
     btns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -287,9 +254,9 @@ function initProjectFilter() {
                 
                 if (match) {
                     card.style.opacity = '0';
-                    card.style.transform = 'translateY(16px)';
+                    card.style.transform = 'translateY(12px)';
                     requestAnimationFrame(() => {
-                        card.style.transition = 'all 0.4s ease';
+                        card.style.transition = 'all 0.3s ease';
                         card.style.opacity = '1';
                         card.style.transform = 'translateY(0)';
                     });
@@ -299,7 +266,7 @@ function initProjectFilter() {
     });
 }
 
-// Contact Form Handler
+// ===== Contact Form Handler =====
 function initContactForm() {
     const form = document.getElementById('contactForm');
     const btn = document.getElementById('submitBtn');
@@ -307,9 +274,9 @@ function initContactForm() {
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const origText = btn.innerHTML;
+        const origHTML = btn.innerHTML;
         
-        btn.innerHTML = 'Mengirim...';
+        btn.innerHTML = '<span>Mengirim...</span>';
         btn.disabled = true;
 
         try {
@@ -317,6 +284,7 @@ function initContactForm() {
             const formData = new FormData(form);
             const payload = {};
             formData.forEach((val, key) => { payload[key] = val; });
+            
             if (payload.name) {
                 payload._subject = `[PORTOFOLIO] Pesan Baru dari ${payload.name}`;
             }
@@ -333,15 +301,16 @@ function initContactForm() {
             const data = await res.json().catch(() => ({}));
 
             if (res.ok && (data.success === "true" || data.success === true)) {
-                btn.innerHTML = '✓ Pesan Terkirim!';
-                btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                btn.innerHTML = '<span>✓ Pesan Berhasil Terkirim</span>';
+                btn.style.backgroundColor = '#10b981';
+                btn.style.color = '#ffffff';
                 form.reset();
             } else if (data.message && data.message.toLowerCase().includes('activation')) {
-                btn.innerHTML = '⚠️ Perlu Aktivasi Email!';
-                btn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
-                alert('PENTING DARI FORMSUBMIT:\n\nSilakan cek Inbox atau folder Spam di Gmail (adiabdulrozaq15@gmail.com) dan klik tombol "Activate Form".\n\nSetelah diaktifkan sekali, pesan dari portofolio akan langsung otomatis masuk ke email Anda!');
+                btn.innerHTML = '<span>Perlu Aktivasi Email</span>';
+                btn.style.backgroundColor = '#f59e0b';
+                btn.style.color = '#ffffff';
+                alert('Pemberitahuan FormSubmit:\n\nSilakan cek inbox/spam email Anda (adiabdulrozaq15@gmail.com) dan klik tautan "Activate Form". Pesan berikutnya akan langsung masuk otomatis!');
             } else {
-                // Fallback to native form submit to trigger FormSubmit activation/thank you page
                 form.submit();
                 return;
             }
@@ -351,21 +320,22 @@ function initContactForm() {
         }
 
         setTimeout(() => {
-            btn.innerHTML = origText;
-            btn.style.background = '';
+            btn.innerHTML = origHTML;
+            btn.style.backgroundColor = '';
+            btn.style.color = '';
             btn.disabled = false;
             lucide.createIcons();
         }, 5000);
     });
 }
 
-// Back to Top Button
+// ===== Back to Top Button =====
 function initBackToTop() {
     const btn = document.getElementById('backToTop');
     if (!btn) return;
 
     window.addEventListener('scroll', () => {
-        btn.classList.toggle('visible', window.scrollY > 400);
+        btn.classList.toggle('visible', window.scrollY > 350);
     });
 
     btn.addEventListener('click', () => {
@@ -374,42 +344,32 @@ function initBackToTop() {
     });
 }
 
-// ===== Interactive 3D Mouse Tilt Effect =====
-function initTiltEffect() {
-    const tiltElements = document.querySelectorAll('.code-window, [data-tilt]');
+// ===== Smooth Interactive Hover on Cards =====
+function initSmoothHover() {
+    const cards = document.querySelectorAll('.project-card, .skill-card, .system-card, .exp-item');
 
-    tiltElements.forEach(el => {
-        const onMouseMove = (e) => {
-            const bounds = el.getBoundingClientRect();
-            const mouseX = e.clientX - bounds.left;
-            const mouseY = e.clientY - bounds.top;
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.classList.add('is-hovered');
+        });
 
-            // Normalize mouse position relative to center (-1 to +1)
-            const xPct = (mouseX / bounds.width - 0.5) * 2;
-            const yPct = (mouseY / bounds.height - 0.5) * 2;
+        card.addEventListener('mouseleave', () => {
+            card.classList.remove('is-hovered');
+        });
+    });
+}
 
-            // Maximum tilt angle (degrees)
-            const maxRotateX = 14;
-            const maxRotateY = 14;
+// ===== Subtle Cursor Ambience =====
+function initCursorGlow() {
+    // Only activate for non-touch cursor devices
+    if (!window.matchMedia('(pointer: fine)').matches) return;
 
-            const rotateX = -yPct * maxRotateX;
-            const rotateY = xPct * maxRotateY;
+    const glow = document.createElement('div');
+    glow.classList.add('cursor-glow');
+    document.body.appendChild(glow);
 
-            el.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`;
-            el.style.transition = 'transform 0.08s ease-out';
-        };
-
-        const onMouseEnter = () => {
-            el.style.transition = 'transform 0.08s ease-out';
-        };
-
-        const onMouseLeave = () => {
-            el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-            el.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-        };
-
-        el.addEventListener('mousemove', onMouseMove);
-        el.addEventListener('mouseenter', onMouseEnter);
-        el.addEventListener('mouseleave', onMouseLeave);
+    document.addEventListener('mousemove', (e) => {
+        glow.style.setProperty('--mx', e.clientX + 'px');
+        glow.style.setProperty('--my', e.clientY + 'px');
     });
 }
